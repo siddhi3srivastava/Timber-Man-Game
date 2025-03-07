@@ -1,8 +1,8 @@
-🌲 Timberman Game 🪓
+# 🌲 Timberman Game 🪓
 
 Timberman is a simple yet engaging game developed in C++. The objective is to chop wood while avoiding obstacles. This project demonstrates fundamental game development concepts, including event handling, animations, and collision detection.
 
-✨ Features
+## ✨ Features
 
   ~🎮 Classic Timberman gameplay
 
@@ -12,13 +12,13 @@ Timberman is a simple yet engaging game developed in C++. The objective is to ch
 
   ~🎨 Simple yet engaging user interface
 
-🛠 Technologies Used
+## 🛠 Technologies Used
 
   ~💻 C++
 
   ~🖼 SFML (Simple and Fast Multimedia Library) for graphics and event handling
 
-⚙️ Installation
+## ⚙️ Installation
 
   ~📌 Prerequisites
 
@@ -26,7 +26,7 @@ Timberman is a simple yet engaging game developed in C++. The objective is to ch
 
       Install SFML (Simple and Fast Multimedia Library) by following the official documentation: SFML Installation Guide
 
-🏗 Steps to Run the Game
+## 🏗 Steps to Run the Game
 
   ~Clone the repository:
 
@@ -41,7 +41,7 @@ Timberman is a simple yet engaging game developed in C++. The objective is to ch
 
     ./timberman
 
-🎮 Gameplay Instructions
+## 🎮 Gameplay Instructions
 
   ~Press left arrow (←) or right arrow (→) to chop wood. 🪓
 
@@ -49,15 +49,15 @@ Timberman is a simple yet engaging game developed in C++. The objective is to ch
 
   ~The faster you chop, the higher your score 📈.
 
-🤝 Contributing
+## 🤝 Contributing
 
   If you'd like to contribute to improving the game, feel free to fork the repository, create a new branch, and submit a pull request.
 
-📜 License
+## 📜 License
 
   This project is licensed under the MIT License.
 
-📩 Contact
+## 📩 Contact
 
   For any issues or suggestions, feel free to reach out via GitHub Issues.
 
