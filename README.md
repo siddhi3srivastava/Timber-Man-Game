@@ -4,62 +4,62 @@ Timberman is a simple yet engaging game developed in C++. The objective is to ch
 
 ✨ Features
 
-🎮 Classic Timberman gameplay
+  ~🎮 Classic Timberman gameplay
 
-🕹️ Smooth animations and controls
+  ~🕹️ Smooth animations and controls
 
-📊 Score tracking system
+  ~📊 Score tracking system
 
-🎨 Simple yet engaging user interface
+  ~🎨 Simple yet engaging user interface
 
 🛠 Technologies Used
 
-💻 C++
+  ~💻 C++
 
-🖼 SFML (Simple and Fast Multimedia Library) for graphics and event handling
+  ~🖼 SFML (Simple and Fast Multimedia Library) for graphics and event handling
 
 ⚙️ Installation
 
-📌 Prerequisites
+  ~📌 Prerequisites
 
-Ensure you have C++ installed on your system.
+      Ensure you have C++ installed on your system.
 
-Install SFML (Simple and Fast Multimedia Library) by following the official documentation: SFML Installation Guide
+      Install SFML (Simple and Fast Multimedia Library) by following the official documentation: SFML Installation Guide
 
 🏗 Steps to Run the Game
 
-Clone the repository:
+  ~Clone the repository:
 
-git clone https://github.com/yourusername/timberman-game.git
-cd timberman-game
+    git clone https://github.com/yourusername/timberman-game.git
+    cd timberman-game
 
-Compile the game using g++:
+  ~Compile the game using g++:
 
-g++ -o timberman main.cpp -lsfml-graphics -lsfml-window -lsfml-system
+    g++ -o timberman main.cpp -lsfml-graphics -lsfml-window -lsfml-system
 
-Run the game:
+  ~Run the game:
 
-./timberman
+    ./timberman
 
 🎮 Gameplay Instructions
 
-Press left arrow (←) or right arrow (→) to chop wood. 🪓
+  ~Press left arrow (←) or right arrow (→) to chop wood. 🪓
 
-Avoid the falling branches 🌿 to stay alive.
+  ~Avoid the falling branches 🌿 to stay alive.
 
-The faster you chop, the higher your score 📈.
+  ~The faster you chop, the higher your score 📈.
 
 🤝 Contributing
 
-If you'd like to contribute to improving the game, feel free to fork the repository, create a new branch, and submit a pull request.
+  If you'd like to contribute to improving the game, feel free to fork the repository, create a new branch, and submit a pull request.
 
 📜 License
 
-This project is licensed under the MIT License.
+  This project is licensed under the MIT License.
 
 📩 Contact
 
-For any issues or suggestions, feel free to reach out via GitHub Issues.
+  For any issues or suggestions, feel free to reach out via GitHub Issues.
 
-Happy Chopping! 🪓🎯
+🌟 Happy Chopping! 🪓🎯
 
