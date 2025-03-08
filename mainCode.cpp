@@ -1,34 +1,42 @@
-#include<SFML/Graphics.hpp>
-using namespace sf;
+#include<SFML/Graphics.hpp> //this library provides functions and classes for creating shapes, handling textures etc
+using namespace sf;         //compiles using sf namespace, allows using SFML function without sf::
 int main(){
-  VideoMode vm(1920, 1080);   //VideoMode ---> class
-  RenderWindow window(vm,"TIMBER MAN GAME", Style::Fullscreen);   //RenderWindow ---> class
+  VideoMode vm(1920, 1080);   //VideoMode ---> class, vm ---> Object
+  RenderWindow window(vm,"TIMBER MAN GAME", Style::Fullscreen);   //RenderWindow ---> class, window ---> Object
 
-  View view(FloatRect(0,0,1920,1080));
-  window.setView(view);
+  View view(FloatRect(0,0,1920,1080));   // 'view' object controls what portion of the screen is visible
+  //FloatRect ---> a recatangle with top-left corner at (0,0) and size 1920x1080
+  window.setView(view);  // setView ---> sets the window to display the created view
 
-  Texture textureBackground;
-  textureBackground.loadFromFile("graphics/background.png");
-  Sprite spriteBackground;
-  spriteBackground.setTexture(textureBackground);
-  spriteBackground.setPosition(0,0);
+  
+  //---Associating image to the background---
+  Texture textureBackground;   // Texture ---> class(stores image)
+  textureBackground.loadFromFile("graphics/background.png"); //loadFromFile ---> Loads an image from file into object 'textureBackground'
+  Sprite spriteBackground;     //Sprite ---> class(sets the image) 
+  spriteBackground.setTexture(textureBackground);   //setTexture ---> assigns the image
+  spriteBackground.setPosition(0,0);  // setPosition ---> sets the position of sprite(display) to top-left corner
 
+  
+  //---Associating image to the tree---
   Texture textureTree;
   textureTree.loadFromFile("graphics/tree.png");
   Sprite spriteTree;
   spriteTree.setTexture(textureTree);
   spriteTree.setPosition(810,0);
 
+  
+  //---Associating image to the bee---
   Texture textureBee;
   textureBee.loadFromFile("graphics/bee.png");
   Sprite spriteBee;
   spriteBee.setTexture(textureBee);
   spriteBee.setPosition(0, 800);
 
-  bool beeActive=false;
-  float beeSpeed=0.0f;
+  bool beeActive=false;  //determines if the bee is moving
+  float beeSpeed=0.0f;   //hols the bee's movement speed 
 
-
+  
+  //---Associating image to the clouds---
   Texture textureCloud;
   textureCloud.loadFromFile("graphics/cloud.png");
   Sprite spriteCloud1, spriteCloud2, spriteCloud3;
@@ -37,7 +45,7 @@ int main(){
   spriteCloud3.setTexture(textureCloud);
   spriteCloud1.setPosition(0,0);
   spriteCloud2.setPosition(0,150);
-  spriteCloud2.setScale(0.5,0.5);
+  spriteCloud2.setScale(0.5,0.5);   //scales down(size) of cloud 2
   spriteCloud3.setPosition(0,300);
 
   bool cloud1Active=false;
@@ -48,8 +56,9 @@ int main(){
   
   bool cloud3Active=false;
   float cloud3Speed=0.0f;
-                         
-  Clock clock;
+
+  
+  Clock clock;   //Clock ---> class, used for contolling movement speeds and animations, keeps track of time
 
 
   //---timeBar code ---
@@ -60,7 +69,7 @@ int main(){
   timeBar.setFillColor(Color::Red);
   timeBar.setPosition((1920/2)-200, 980);
 
-  //---starting timer, showing remianing time---
+  //---starting timer, showing remaining time---
   Time gameTimeTotal;
   float timeRemaining=6.0f;
   float timeBarWidthPerSecond= timeBarStartWidth/timeRemaining;
@@ -71,7 +80,7 @@ int main(){
   Text messageText;
   Text scoreText;
   
-  Font font;       // font ---> Object
+  Font font;   // font ---> Object
   font.loadFromFile("font/KOMIKAP_.ttf");
   //setting font
   messageText.setFont(font);
@@ -92,18 +101,19 @@ int main(){
   scoreText.setPosition(10,10);
 
   //---gaming loop section---
+  //keeping the window open
   while(window.isOpen()){
   
     Event event;
     while(window.pollEvent(event)){
-      if(event.type==Event::Closed){
+      if(event.type==Event::Closed){  
         window.close();
       }
     }
   
-    if(Keyboard::isKeyPressed(Keyboard::Escape)){    //KeyPressed ---> Function
+    if(Keyboard::isKeyPressed(Keyboard::Escape)){    //KeyPressed ---> Function, i.e closes the window if Escape key is pressed
       window.close();
-    }
+    }  
     if(Keyboard::isKeyPressed(Keyboard::Return)){
       paused=false;
       score=0;
@@ -183,7 +193,7 @@ int main(){
   
   
   
-    window.clear();
+    window.clear();  //clears the screeen before drawing the next frame
   
     window.draw(spriteBackground);
     window.draw(spriteCloud1);
@@ -194,7 +204,7 @@ int main(){
     window.draw(timeBar);
     window.draw(messageText);
     window.draw(scoreText);
-    window.display();
+    window.display();  //displays new frame
     }
   return 0;
 }
