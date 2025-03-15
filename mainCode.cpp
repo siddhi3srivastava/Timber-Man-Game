@@ -1,5 +1,17 @@
 #include<SFML/Graphics.hpp> //this library provides functions and classes for creating shapes, handling textures etc
 using namespace sf;         //compiles using sf namespace, allows using SFML function without sf::
+
+void updateBranches(int seed);  //declaring a function
+const int NUM_BRANCHES=6;
+Sprite branches[NUM_BRANCHES];  
+
+enum class side{   //enum is a datatype, side is a class
+  LEFT, RIGHT, NONE  //position of the branches
+};
+
+side branchesPositions[NUM_BRANCHES];  //array that stores the branch's position- left, right or null
+
+
 int main(){
   VideoMode vm(1920, 1080);   //VideoMode ---> class, vm ---> Object
   RenderWindow window(vm,"TIMBER MAN GAME", Style::Fullscreen);   //RenderWindow ---> class, window ---> Object
@@ -23,6 +35,15 @@ int main(){
   Sprite spriteTree;
   spriteTree.setTexture(textureTree);
   spriteTree.setPosition(810,0);
+
+  //for branches
+  Texture textureBranch;
+  textureBranch.loadFromFile("graphics/branch.png");
+  for(int i=0; i<NUM_BRANCHES; i++){
+    branches[i].setTexture(textureBranch);
+    branches[i].setPosition(1110, 200);
+    branches[i].setOrigin(0,0);
+  }
 
   
   //---Associating image to the bee---
@@ -127,6 +148,11 @@ int main(){
       //if this game is running on 60fps, frame time =1/60=0.016=dt.asSecond. TimeRemaining=6=>6-0.016=5.99. timebar/remainingtime=400/6=66.6.
       //Whenever we press enter, width 400 is reduced to 66.6*5.99=398.5
       if (timeRemaining<=0.0f){
+        messageText.setString("GAME OVER!");
+        messageText.setCharacterSize(75);
+        FloatRect textRect=messageText.getLocalBounds();
+        messageText.setOrigin(textRect.left+textRect.width/2.0f, textRect.top+textRect.height/2.0f);
+        messageText.setPosition(960, 540);
         paused=true;
       }
     }
@@ -190,23 +216,73 @@ int main(){
         cloud3Active=false;
       }
     }
-  
-  
-  
-    window.clear();  //clears the screeen before drawing the next frame
-  
-    window.draw(spriteBackground);
-    window.draw(spriteCloud1);
-    window.draw(spriteCloud2);
-    window.draw(spriteCloud3);
-    window.draw(spriteTree);
-    window.draw(spriteBee);
-    window.draw(timeBar);
-    window.draw(messageText);
-    window.draw(scoreText);
-    window.display();  //displays new frame
+
+    updateBranches(1);
+    updateBranches(2);
+    updateBranches(3);
+    updateBranches(4);
+    updateBranches(5);
+    updateBranches(6);
+    //placing branches in the game
+    for(int i=0; i<NUM_BRANCHES; i++){
+      float height= i*150;
+      if(branchesPositions[i]==side::LEFT){
+        branches[i].setPosition(610, height);
+        branches[i].setOrigin(220, 40);
+        branches[i].setRotation(180);
+      }
+      else if(branchesPositions[i]==side::RIGHT){
+        branches[i].setPosition(1330, height);
+        branches[i].setOrigin(220, 40);
+        branches[i].setRotation(0);
+      }
+      else{
+        branches[i].setPosition(3000, height);
+      }
     }
-  return 0;
+ }//endif(!paused)
+
+ window.clear();  //clears the screeen before drawing the next frame
+    
+ window.draw(spriteBackground);
+ window.draw(spriteCloud1);
+ window.draw(spriteCloud2);
+ window.draw(spriteCloud3);
+ for(int i=0; i<NUM_BRANCHES; i++){
+    window.draw(branches[i]);
+ }
+ window.draw(spriteTree);
+ window.draw(spriteBee);
+ window.draw(timeBar);
+ if(paused){
+    window.draw(messageText);
+ }
+ window.draw(scoreText);
+ window.display();  //displays new frame
+}
+return 0;
+}
+
+void updateBranches(int seed){
+  for(int j=NUM_BRANCHES-1; j>0;j--){
+    branchesPositions[j]=branchesPositions[j-1];
+  }
+  srand((int)time(0)+seed);
+  int r=(rand()%5);
+  switch(r){
+    case 0: branchesPositions[0]=side::LEFT;
+    break;
+    case 1: branchesPositions[0]=side::RIGHT;
+    break;
+    default: branchesPositions[0]=side::NONE;
+    break;
+  }
 }
 
 
+
+
+  
+  
+  
+  
